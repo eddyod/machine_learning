@@ -67,7 +67,62 @@
 </slide>
  
 <slide class="title-slide segue nobackground" id="slide-2">
-  <hgroup style="padding:5px 50px 0px 10px; font-size:smaller;">
+<hgroup style="padding:5px 50px 0px 10px; font-size:smaller;">
+
+<h2>Getting the data</h2>
+<p>First we have to get and load the data.</p>
+
+<pre style="font-size:smaller;"><code class="r">
+setwd("~/programming/machine_learning")
+library("caret")
+training <- read.csv("~/programming/machine_learning/pml-training.csv")
+testing <- read.csv("~/programming/machine_learning/pml-testing.csv")
+</code>
+</pre>
+
+<p style="font-weight:bolder;font-size:smaller;">Use your keyboard's left and right arrow keys to navigate the pages.</p>
+<p style="font-size:smaller;"><a href="http://www.mephistosoftware.com/wp/edward_odonnell_curriculum_mortem">eddyod</a></p>
+</hgroup>
+
+</slide>
+ 
+<slide class="title-slide segue nobackground" id="slide-2">
+<hgroup style="padding:5px 50px 0px 10px; font-size:smaller;">
+
+<h2>Preparing the data</h2>
+
+<pre style="font-size:smaller;"><code class="r">
+upper_limit <- dim(training)[1] * 0.95
+#Remove columns with more than 95% of NA or empty values
+goodColumns <- !apply(training, 2, function(x) sum(is.na(x)) > upper_limit  || sum(x=="") > upper_limit)
+training <- training[, goodColumns]
+badColumns <- nearZeroVar(training, saveMetrics = TRUE)
+training <- training[, badColumns$nzv==FALSE]
+training$classe = factor(training$classe)
+#Partition rows into training and crossvalidation
+inTrain <- createDataPartition(training$classe, p = 0.6)[[1]]
+crossvalidation <- training[-inTrain,]
+training <- training[ inTrain,]
+inTrain <- createDataPartition(crossvalidation$classe, p = 0.75)[[1]]
+# get cross validation data
+crossvalidation_test <- crossvalidation[ -inTrain,]
+crossvalidation <- crossvalidation[inTrain,]
+# create testing data
+testing <- testing[, 6:dim(testing)[2]]
+testing <- testing[, goodColumns]
+testing$classe <- NA
+testing <- testing[, badColumns$nzv==FALSE]
+</code>
+</pre>
+
+<p style="font-weight:bolder;font-size:smaller;">Use your keyboard's left and right arrow keys to navigate the pages.</p>
+<p style="font-size:smaller;"><a href="http://www.mephistosoftware.com/wp/edward_odonnell_curriculum_mortem">eddyod</a></p>
+</hgroup>
+
+</slide>
+ 
+<slide class="title-slide segue nobackground" id="slide-3">
+<hgroup style="padding:5px 50px 0px 10px; font-size:smaller;">
 
 <h2>Building the Random Forest Model</h2>
 <p>The random forest model is built with the caret library. First we create the model, then use the model to predict against
@@ -88,7 +143,7 @@ confusionMatrix(predModFit, crossvalidation$classe)
 
 </slide>
 
-<slide class="title-slide segue nobackground" id="slide-3">
+<slide class="title-slide segue nobackground" id="slide-4">
   <hgroup style="padding:5px 50px 0px 10px; font-size:smaller;">
 
 <h2>Prediction</h2>
@@ -110,7 +165,7 @@ pml_write_files(predModFit)
 
 </slide>
 
-<slide class="title-slide segue nobackground" id="slide-4">
+<slide class="title-slide segue nobackground" id="slide-5">
   <hgroup style="padding:5px 50px 0px 10px;">
 
 <h2>Conclusion</h2>
@@ -136,25 +191,25 @@ received so everything worked out well.</p>
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Simulation of wealth Accumulation'>
+        data-slide=1 title='Machine Learning'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Simulation Process'>
+        data-slide=2 title='Intro'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Multiple line chart of the simulation'>
+        data-slide=3 title='Data'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Histogram of final period values'>
+        data-slide=4 title='Model'>
          4
       </a>
     </li>
