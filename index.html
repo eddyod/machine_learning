@@ -35,38 +35,40 @@
     <h1>Practical Machine Learning</h1>
     <h2>Prediction Assignment Writeup</h2>
     <p>Use your keyboard's left and right arrow keys to navigate the pages.</p>
+    <p style="font-size:smaller;"><a href="http://www.mephistosoftware.com/wp/edward_odonnell_curriculum_mortem">eddyod</a></p>
   </hgroup>
   <article></article>  
 </slide>
     
 
     <!-- SLIDES -->
-    <slide class="title-slide segue nobackground" id="slide-1">
-  <hgroup>
+<slide class="title-slide segue nobackground" id="slide-1">
+  <hgroup style="padding:5px 50px 0px 10px;">
     <h2>Prediction Assignment Writeup</h2>
-  </hgroup>
-  <article data-timings="">
+ 
     <p>This presentation will demonstrate how to predict the manner in which users performed an exercise and if they performed
     the exercise correctly. 
-    Data was collected from six people that had devices attached to their bodies  which monitored the movement of the person.
+    Data was collected from six people that had devices attached to their bodies  which monitored the movement of the person while exercising.
     They were asked to perform barbell lifts correctly and incorrectly in 5 different ways. More information is available from the 
     website here: http://groupware.les.inf.puc-rio.br/har (see the section on the Weight Lifting Exercise Dataset). 
     Data was provided in a training and a testing sets. The outcome variable (dependent variable) is named: "classe" variable in the data  sets. 
-    To analyze the data, three separate models from the caret library will be used and compared.
-    <ol>
-    <li>rf</li>
-    <li>gbm</li>
-    <li>lda</li>
-    </ol>
-    
-    Sample errors will be calculated and predictions will be used to predict 20 different test cases.
+    Analysis of the data will consist of:
     </p>
-    <p>Use your keyboard's left and right arrow keys to navigate the pages.</p>
+    <ul>
+    <li>Data will be cleaned</li>
+    <li>Random Forest will be used to build the model</li>
+    <li>Sample errors will be calculated</li>
+    <li>Predictions will be used to predict 20 different test cases.</li>
+    </ul>
+    <p style="font-weight:bolder;font-size:smaller;">Use your keyboard's left and right arrow keys to navigate the pages.</p>
+    <p style="font-size:smaller;"><a href="http://www.mephistosoftware.com/wp/edward_odonnell_curriculum_mortem">eddyod</a></p>
+  </hgroup>
 
 
 </slide>
  
-<slide class="class" id="id" style="background:;">
+<slide class="title-slide segue nobackground" id="slide-2">
+  <hgroup style="padding:5px 50px 0px 10px;">
 
 <h2>Getting and cleaning data</h2>
 <p>The data is in the form of two csv files which are downloaded and placed in a directory on the workstation.</p>
@@ -80,6 +82,10 @@ training <- read.csv("~/programming/machine_learning/pml-training.csv")
 testing <- read.csv("~/programming/machine_learning/pml-testing.csv")
 </code>
 </pre>
+
+    <p style="font-weight:bolder;font-size:smaller;">Use your keyboard's left and right arrow keys to navigate the pages.</p>
+    <p style="font-size:smaller;"><a href="http://www.mephistosoftware.com/wp/edward_odonnell_curriculum_mortem">eddyod</a></p>
+  </hgroup>
 
 </slide>
 
