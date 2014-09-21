@@ -34,7 +34,7 @@
   <hgroup class="auto-fadein">
     <h1>Practical Machine Learning</h1>
     <h2>Prediction Assignment Writeup</h2>
-    <p>Use your keyboards left and right arrow keys to navigate the pages.</p>
+    <p>Use your keyboard's left and right arrow keys to navigate the pages.</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -52,33 +52,40 @@
     They were asked to perform barbell lifts correctly and incorrectly in 5 different ways. More information is available from the 
     website here: http://groupware.les.inf.puc-rio.br/har (see the section on the Weight Lifting Exercise Dataset). 
     Data was provided in a training and a testing sets. The outcome variable (dependent variable) is named: "classe" variable in the data  sets. 
-    To analyze the data, a simple linear regression model is used with all the variables predicting the outcome variable. 
+    To analyze the data, three separate models from the caret library will be used and compared.
+    <ol>
+    <li>rf</li>
+    <li>gbm</li>
+    <li>lda</li>
+    </ol>
     
-    To further analyze the model a Random Forest model will be used and finally a combined model will be used to see if a best model can be determined.
     Sample errors will be calculated and predictions will be used to predict 20 different test cases.
     </p>
+    <p>Use your keyboard's left and right arrow keys to navigate the pages.</p>
 
-<p>The simulation starts with some parameters that are adjusted by the user. These are as follows:</p>
 
-<ol>
-<li>Set number of years to accumulate capital.</li>
-<li>Set starting amount of wealth.</li>
-<li>Set annual rate of return.</li>
-<li>Set risk level of rate of return (standard deviation).</li>
-<li>Set inflation rate.</li>
-<li>Set inflation rate volatility.</li>
-<li>Set monthly deposits.</li>
-<li>Set number of simulations.</li>
-</ol>
+</slide>
+ 
+<slide class="class" id="id" style="background:;">
 
-  </article>
-  <!-- Presenter Notes -->
+<h2>Getting and cleaning data</h2>
+<p>The data is in the form of two csv files which are downloaded and placed in a directory on the workstation.</p>
+
+<pre><code class="r">
+# Set working dir
+setwd("~/programming/machine_learning")
+library("caret")
+# load two csv files
+training <- read.csv("~/programming/machine_learning/pml-training.csv")
+testing <- read.csv("~/programming/machine_learning/pml-testing.csv")
+</code>
+</pre>
+
 </slide>
 
+  <!-- Presenter Notes -->
+
 <slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Simulation Process</h2>
-  </hgroup>
   <article data-timings="">
     <p>After any of the parameters are set, the shiny reactive inputs will rerun the simulation. The user can also use the submit button to rerun the simulation. The simulation takes all the parameters and runs through a loop which has a length of years * 12. All the calculations are done with monthly data. During each iteration, a random number is drawn from a normal distribution with mean = rate of return and the standard deviation = to the risk the user inputed. The following R code is used:</p>
 
