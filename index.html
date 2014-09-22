@@ -168,6 +168,44 @@ pml_write_files(predModFit)
 received so everything worked out well.</p>
 
 <pre><code class="r">
+          Reference
+Prediction    A    B    C    D    E
+         A 1672    5    0    0    0
+         B    1 1132    6    0    0
+         C    0    2 1020   11    0
+         D    0    0    0  953    4
+         E    1    0    0    1 1078
+
+Overall Statistics
+                                        
+               Accuracy : 0.995         
+                 95% CI : (0.993, 0.996)
+    No Information Rate : 0.284         
+    P-Value [Acc > NIR] : <2e-16        
+                                        
+                  Kappa : 0.993         
+ Mcnemar's Test P-Value : NA            
+
+Statistics by Class:
+
+                     Class: A Class: B Class: C Class: D
+Sensitivity             0.999    0.994    0.994    0.988
+Specificity             0.999    0.999    0.997    0.999
+Pos Pred Value          0.997    0.994    0.987    0.996
+Neg Pred Value          1.000    0.999    0.999    0.998
+Prevalence              0.284    0.194    0.174    0.164
+Detection Rate          0.284    0.192    0.173    0.162
+Detection Prevalence    0.285    0.194    0.176    0.163
+Balanced Accuracy       0.999    0.996    0.996    0.993
+                     Class: E
+Sensitivity             0.996
+Specificity             1.000
+Pos Pred Value          0.998
+Neg Pred Value          0.999
+Prevalence              0.184
+Detection Rate          0.183
+Detection Prevalence    0.183
+Balanced Accuracy       0.998
 </code>
 </pre>
 
